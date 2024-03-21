@@ -1,3 +1,18 @@
+# InfOlimpiadas
+
+### Necessidade
+
+Nosso projeto, o InfOlimpiadas (Informações + Olimpíadas) consiste na ideia de atender as necessidades das pessoas que tem interesse em saber sobre os jogos das Olimpiadas, atletas e etc.
+
+### Funcionalidades 
+Em nosso site, será possível criar um usuário para administrar as informações contidas no site e deixa-lo da melhor forma possível para os usuários consumidores do conteúdo. 
+Será possível realizar um cadastro de atletas, modalidades, seleções, etc. Além de ter dados iniciais providos por uma API pública.
+
+### Tecnologias
+Escolhemos fazer o front-end utilizando o framework React.js e o Backend usando ASP.NET core com uma arquitetura monolítica. O Banco de dados será feito com MySQL.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
