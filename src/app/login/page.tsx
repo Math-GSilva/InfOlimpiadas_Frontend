@@ -1,15 +1,33 @@
-'use client'
+'use client';
 
-import React from 'react';
-import { useRouter } from 'next/router';
+import React, { FormEvent, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import AuthService from '../../services/authService';
+import { setTokenCookie } from '@/utils/cookie';
 
-const LoginPage: React.FC = () => {
+interface FormData {
+  email: string;
+  password: string;
+}
 
-  const handleSubmit = (event: React.SyntheticEvent) => {
-    event.preventDefault();
+export default function LoginPage() {
+  const router = useRouter();
+  const [formData, setFormData] = useState<FormData>({ email: '', password: '' });
 
-    // Validate form data here
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
 
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+    try {
+        console.log("login")
+        const data = await AuthService.login(formData.email, formData.password);
+        localStorage.setItem('tokenJwt', data);
+        console.log("este foi o token salvo: ", localStorage.getItem('tokenJwt'));
+    } catch (error) {
+    }
   };
 
   return (
@@ -41,6 +59,8 @@ const LoginPage: React.FC = () => {
                 name="email"
                 type="email"
                 required
+                value={formData.email}
+                onChange={handleChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
             </div>
@@ -53,6 +73,8 @@ const LoginPage: React.FC = () => {
                 name="password"
                 type="password"
                 required
+                value={formData.password}
+                onChange={handleChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
             </div>
@@ -62,8 +84,7 @@ const LoginPage: React.FC = () => {
               </a>
               <button
                 type="submit"
-                className="bg-[#c3c3c3] text-white py-2 px-4 rounded-md shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
+                className="bg-[#c3c3c3] text-white py-2 px-4 rounded-md shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Entrar
               </button>
             </div>
@@ -73,5 +94,3 @@ const LoginPage: React.FC = () => {
     </div>
   );
 };
-
-export default LoginPage;

@@ -1,11 +1,8 @@
 import axios, { AxiosInstance } from 'axios';
+import { setTokenCookie } from '../utils/cookie';
 
 interface LoginResponse {
   token: string;
-  user: {
-    id: string;
-    email: string;
-  };
 }
 
 interface RegisterResponse {
@@ -24,17 +21,18 @@ class AuthService {
 
   constructor() {
     this.api = axios.create({
-      baseURL: process.env.NEXT_PUBLIC_API_URL,
+      baseURL: "https://localhost:7037/",
       headers: {
         'Content-Type': 'application/json',
       },
     });
   }
 
-  async login(email: string, password: string): Promise<LoginResponse> {
+  async login(email: string, password: string): Promise<string> {
     try {
-      const response = await this.api.post<LoginResponse>('/login', { email, password });
-      return response.data;
+      const response = await this.api.post<string>('/usuario/login', { email, password });
+      console.log(response.data);
+      return response.data.toString();
     } catch (error) {
       console.error('Failed to login:', error);
       throw new Error('Login failed');
