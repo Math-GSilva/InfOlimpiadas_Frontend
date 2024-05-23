@@ -25,7 +25,7 @@ export default function LoginPage() {
         console.log("login")
         const data = await AuthService.login(formData.email, formData.password);
         localStorage.setItem('tokenJwt', data);
-        console.log("este foi o token salvo: ", localStorage.getItem('tokenJwt'));
+        router.push('/homepage');
     } catch (error) {
     }
   };

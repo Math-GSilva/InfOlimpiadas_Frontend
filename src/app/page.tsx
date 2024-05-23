@@ -93,7 +93,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <a href="#" className="text-sm font-medium text-gray-600 hover:text-gray-900">Fazer Login</a>
+              <a href="/login" className="text-sm font-medium text-gray-600 hover:text-gray-900">Fazer Login</a>
               <button type="submit" className="bg-[#c3c3c3] text-white py-2 px-4 rounded-md shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Criar Conta
               </button>
