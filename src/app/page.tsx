@@ -4,6 +4,7 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import Image from 'next/image';
 import AuthService from '../services/authService';
 import { useRouter } from 'next/navigation';
+import DefaultHeader from './components/defaultHeader';
 
 
 interface FormData {
@@ -50,20 +51,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <header className="bg-[#f9f8f6] py-4 shadow-md">
-        <div className="container mx-auto flex items-center justify-between px-6">
-          <div className="flex items-center">
-            {/* <Image src={logo} alt="Logo das Olimpíadas" width={50} height={50} /> */}
-          </div>
-          <nav className="flex space-x-4">
-            <button className="px-4 py-2 rounded">Calendário</button>
-            <button className="px-4 py-2 rounded">Países</button>
-            <button className="px-4 py-2 rounded">Atletas</button>
-            <button className="px-4 py-2 rounded">Esportes</button>
-            <button className="px-4 py-2 rounded">Medalhas</button>
-          </nav>
-        </div>
-      </header>
+      <DefaultHeader/>
       <main className="flex flex-1 items-center justify-center">
         <div className="w-full max-w-lg p-8 bg-white shadow-md rounded">
           <h1 className="text-2xl font-bold mb-6 text-center">Criar Conta</h1>

@@ -4,6 +4,7 @@ import React, { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import AuthService from '../../services/authService';
 import { setTokenCookie } from '@/utils/cookie';
+import DefaultHeader from '../components/defaultHeader';
 
 interface FormData {
   email: string;
@@ -32,20 +33,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <header className="bg-[#f9f8f6] py-4 shadow-md">
-        <div className="container mx-auto flex items-center justify-between px-6">
-          <div className="flex items-center">
-            {/* Add your logo here */}
-          </div>
-          <nav className="flex space-x-4">
-            <button className="px-4 py-2 rounded">Calendário</button>
-            <button className="px-4 py-2 rounded">Países</button>
-            <button className="px-4 py-2 rounded">Atletas</button>
-            <button className="px-4 py-2 rounded">Esportes</button>
-            <button className="px-4 py-2 rounded">Medalhas</button>
-          </nav>
-        </div>
-      </header>
+      <DefaultHeader/>
       <main className="flex flex-1 items-center justify-center">
         <div className="w-full max-w-lg p-8 bg-white shadow-md rounded">
           <h1 className="text-2xl font-bold mb-6 text-start">Login</h1>

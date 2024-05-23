@@ -39,6 +39,17 @@ class AuthService {
     }
   }
 
+  async veirifyToken(token: string): Promise<boolean> {
+    try {
+      const response = await this.api.post<boolean>('/usuario/verificarToken', { token });
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Failed to login:', error);
+      throw new Error('Login failed');
+    }
+  }
+
   async register(data: RegisterData): Promise<RegisterResponse> {
     try {
       console.log(data);
